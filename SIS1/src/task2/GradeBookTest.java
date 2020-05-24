@@ -1,0 +1,44 @@
+package task2;
+
+import java.util.Scanner;
+import java.util.Vector;
+
+class GradeBookTest {
+	public static void main(String[] args) {
+		Vector<Student> students = new Vector<Student>();
+		
+		Student s1 = new Student("Aza Braza", "18BD012345");
+		Student s2 = new Student("Baha Bratha", "18BD98765");
+		Student s3 = new Student("Sasha Barsha", "18BD23456");
+		Student s4 = new Student("Dancho Bacho", "18BD001001");
+		Student s5 = new Student("Era Smela", "18BD020202");
+		Student s6 = new Student("Farkhat Ali", "18BD020304");
+		students.add(s1);
+		students.add(s2);		
+		students.add(s3);
+		students.add(s4);
+		students.add(s5);
+		students.add(s6);
+		
+		Vector<String> v1 = new Vector<String>();
+		String prerequsiteTwo = "PP2";
+		v1.add("PP2");
+		v1.add(prerequsiteTwo);
+		Course subject = new Course("\"Object-oriented Programming and Design\"", "Good Course", 3, v1);
+		GradeBook gb = new GradeBook(students, subject);
+		int res = 0;
+		
+		//System.out.println(gb.toString());
+		gb.displayMessage();
+		int a[] = new int[students.size()];
+		for(int i = 0; i < students.size(); i++) {
+			System.out.print(students.get(i).getName() + ": ");
+			@SuppressWarnings("resource")
+			Scanner sc = new Scanner(System.in);
+			int input = sc.nextInt();
+			res = res + input;
+			a[i] = input;
+		}
+		gb.displayGradeReport(res, a);
+	}
+}

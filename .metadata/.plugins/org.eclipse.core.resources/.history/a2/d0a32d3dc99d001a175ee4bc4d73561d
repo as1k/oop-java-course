@@ -1,0 +1,91 @@
+
+public class lab1task4 {
+
+	public static void main(String[] args) {
+		Time t = new Time(0,5,6);
+		Time t2 = new Time(4,24,33);
+		t.add(t2);
+		System.out.println("Universal: " + t.toUniversal()); //prints"23:05:06"
+		System.out.println("Standard: " + t.toStandard());  //prints"11:05:06 PM"
+	}
+}
+	class Time{
+		int hour;
+		int minute;
+		int second;
+		
+		public Time(int hour, int minute, int second) {
+			this.hour = checkhour(hour);
+			this.minute = checkminsec(minute);
+			this.second = checkminsec(second);
+		}
+		
+		public int checkhour(int hour) {
+			int x = 0;
+			if(hour >= 0 && hour<=23) {
+				x = hour;
+			}
+			return x;
+		}
+		public int checkminsec(int minsec) {
+			int x = 0;
+			if(minsec >= 0 && minsec <= 60) {
+				x = minsec;
+			}
+			return x;
+		}
+		
+		public String toUniversal(){
+			if(minute < 10 && second > 9) {
+				return hour + ":" + "0" + minute + ":" + second; 
+			}
+			if(minute > 9 && second < 10) {
+				return hour + ":" + minute + ":"  + "0" + second; 
+			}
+			if(minute < 10 && second < 10) {
+				return hour + ":" + "0" + minute + ":" + "0" + second; 
+			}
+			return hour + ": " + minute + ":" + second;
+		}
+		public String toStandard(){
+			if(hour>12) {
+			if(minute < 10 && second > 9) {
+				return hour-12 + ":" + "0" + minute + ":" + second + " PM"; 
+			}
+			if(minute > 9 && second < 10) {
+				return hour-12 + ":" + minute + ":"  + "0" + second + " PM"; 
+			}
+			if(minute < 10 && second < 10) {
+				return hour-12 + ":" + "0" + minute + ":" + "0" + second + " PM"; 
+			}
+			return hour-12 + ":" + minute + ":" + second + " PM";
+		}else if(hour<=12 && hour!=0) {
+			if(minute < 10 && second > 9) {
+				return hour + ":" + "0" + minute + ":" + second + " AM"; 
+			}
+			if(minute > 9 && second < 10) {
+				return hour + ":" + minute + ":"  + "0" + second + " AM"; 
+			}
+			if(minute < 10 && second < 10) {
+				return hour + ":" + "0" + minute + ":" + "0" + second + " AM"; 
+			}
+			return hour + ":" + minute + ":" + second + " AM";
+		}else if(hour == 0) {
+			if(minute < 10 && second > 9) {
+				return hour+"0" + ":" + "0" + minute + ":" + second + " AM"; 
+			}
+			if(minute > 9 && second < 10) {
+				return hour+"0" + ":" + minute + ":"  + "0" + second + " AM"; 
+			}
+			if(minute < 10 && second < 10) {
+				return hour+"0" + ":" + "0" + minute + ":" + "0" + second + " AM"; 
+			}
+			return hour+"0" + ":" + minute + ":" + second + " AM";
+		} return "Error";
+		}
+		public void add(Time t) {
+			this.hour += checkhour(t.hour);
+			this.minute += checkminsec(t.minute);
+			this.second += checkminsec(t.second);
+		}
+}

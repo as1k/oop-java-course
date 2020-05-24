@@ -1,0 +1,12 @@
+package problem3;
+
+import java.util.Comparator; 
+
+import task2.Employee;
+import task2.Person;
+
+class DateComparator extends Person implements Comparator<Employee>{
+	public int compare(Employee e1, Employee e2) {
+		return e1.getHireDate().compareTo(e2.getHireDate());
+	}
+}

@@ -1,0 +1,29 @@
+package lab1;
+import java.util.*;
+
+public class lab1task2 {
+
+	public static void main(String[] args) {
+		StarTriangle small = new StarTriangle(3);
+		System.out.print(small.toString());
+	}
+}
+
+class StarTriangle{
+	public int width;
+	String s = new String("");
+	
+	public StarTriangle(int width) {
+		this.width = width;
+	}
+	
+	@Override
+	public String toString() {
+		for(int i = 0; i < width; i++) {
+			for(int j = 0; j <= i; j++) {
+				System.out.print(s + "[*]");
+			}System.out.print("\n");
+		}
+		return "";
+	}
+}

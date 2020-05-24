@@ -1,0 +1,9 @@
+Ivanov Ivan - "A"
+Aliyev Ali - "F"
+Menshikov Sergey - "A"
+Average - 52.666666666666664
+Maximum - 71
+Minimum = 22
+Average - 58.25
+Maximum - 75
+Minimum = 22

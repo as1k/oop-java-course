@@ -1,0 +1,82 @@
+
+public class lab2task3 {
+
+	public static void main(String[] args) {
+		Employee[] team = {
+		          new Employee("Ozil", "10", 390000, 2018),  
+		          new Employee("Aubameyang", "14", 190000, 2018),
+		          new Employee("Lacazette", "09", 140000, 2018),
+		          new Employee("Mkhitaryan", "07", 200000, 2018) 
+		        };
+		Manager manager = new Manager("Unai Emery", "0001", 200500, 2018, 5, team);
+		System.out.println(manager);
+	}
+	
+}
+class Person{
+	public String name;
+	public String id;
+	    
+	public Person(String name, String id){
+		this.name = name;
+		this.id = id;
+	}	        
+	
+	public boolean equals(Person p){
+	return p.name==name && p.id==id;
+	}
+	
+	public String toString() {
+	return name + " " + id;
+	}
+}
+
+class Employee extends Person {
+    public double salary;
+    public int year;
+
+    public Employee(String name, String id, double salary, int year) {
+        super(name, id);
+        this.salary = salary;
+        this.year = year;
+    }
+    
+    public boolean equals(Employee p){
+    	return  p.salary == salary && super.equals(p) && p.year == year;
+    	}
+     
+    @Override 
+    public String toString() {
+    	return super.toString() + ", salary: " + salary + ", year: " + year + ".";
+        }
+}
+
+class Manager extends Employee{
+	public int bonus;
+    public Employee[] team;
+    
+	public Manager(String name, String id, double salary, int year, int bonus, Employee[] team) {
+		super(name, id, salary, year);
+		this.bonus = bonus;
+		this.team = team;
+		// TODO Auto-generated constructor stub
+	}
+
+	 @Override 
+     public boolean equals(Person p){
+         Manager manager = (Manager)p;
+         return super.equals(manager) && manager.bonus == bonus && manager.team == team;
+     }
+     
+	 @Override 
+     public String toString() {
+         return super.toString() + "; bonus: " + bonus + "; employees: " + '\n' + employees();
+     }
+     public String employees() {
+         String s = new String();
+         for(int i=0; i<this.team.length; i++){
+             s += this.team[i] + "\n";
+         }
+         return s;
+     }
+}

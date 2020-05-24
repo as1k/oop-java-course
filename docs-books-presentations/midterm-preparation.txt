@@ -1,0 +1,92 @@
+public boolean equals(Object o) {
+	if(o == this) return true;
+	if(o == null || (o.getClass() != this.getClass())) return false;
+	Person p = (Person) o;
+	return (this.name.equals(p.name)) && (this.id.equals(p.id));
+}
+
+public int hashCode() {
+	return 17+31*name.hashCode() + 17+31*id;
+	// return Objects.hash(name, id);
+}
+
+public String toString() {
+	return "The id of " + name + " is " + id + ".";
+}
+
+--------------------------------------------------------------------
+main:
+public static void main(String[] args) {
+		Person p1 = new Person("Pakita", 1700001);
+		Person p2 = new Person("Aziza", 5400007);
+		
+		Hashset<Person> people = new Hashset<Person>();
+		people.add(p1);
+		people.add(p2);
+		
+		System.out.println(people);
+		System.out.println(people.size);
+}
+---------------------------------------------------------------------
+public class Person{
+	private String name;
+	
+	public Person() {
+		name = "no_name_yet";
+	}
+	
+	public Person(String name) {
+		this.name = name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+}
+
+public class Student extends Person{
+	private int id;
+	
+	public Student() {
+		super();
+	}
+	
+	public Student(String name, int id) {
+		super(name);
+		this.id = id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getId() {
+		return this.id;
+	}
+}
+-------------------------------------------------------------------
+package task3;
+
+import java.io.*;
+import java.io.Serializable;
+
+public class serial_deserial {
+
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
+		FileOutputStream fos = new FileOutputStream("book.out");
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		Book b = new Book(220, "Ann Karenina");
+		oos.writeObject(b);
+		oos.flush();
+		oos.close(); //serialization
+		
+		FileInputStream fis = new FileInputStream("book.out");
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		Book c = (Book) ois.readObject();
+		System.out.println(b); //deserialization
+	}
+}

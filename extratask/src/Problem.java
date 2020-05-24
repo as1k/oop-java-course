@@ -1,0 +1,18 @@
+import java.awt.Color;
+import java.util.Vector;
+
+public class Problem {
+
+	  public static void main(String[] args) {
+	    Vector<Shape> shapes = new Vector<Shape>();
+	    shapes.add(new Circle(Color.RED, 5));
+	    shapes.add(new Square(Color.BLACK, 4));
+	    shapes.add(new Rectangle(Color.RED, 5));
+	    
+	    for (Shape s : shapes) {
+	      s.draw();
+	    }
+	    System.out.println(Shape.cnt);
+	  }
+
+	}

@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class task11 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scan = new Scanner (System.in);
+		String aString = new String();
+		aString = scan.nextLine();
+		String newString = new String();
+		String c = scan.nextLine();
+		newString = Split(aString, c);
+		System.out.println(newString);
+		
+	}
+	public static String Split(String s, String c) {
+		String newString = new String();
+		for(int i = 0; i < s.length(); i++) {
+			newString = newString + s.charAt(i);
+			newString = newString + c;
+		}
+		return newString;
+	}
+}

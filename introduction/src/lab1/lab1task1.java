@@ -1,0 +1,30 @@
+package lab1;
+
+public class lab1task1 {	
+	public static void main(String[] args) {
+		Student s = new Student("Asik Nurmukhambet", "18BD110824");
+		s.access();
+		s.incr();
+		s.incr();
+	}
+}
+class Student{
+		public String name;
+		public String id;
+		public int year;
+		
+		public Student(String name, String id){
+			this.name = name;
+			this.id = id;
+		}
+		
+		public void access(){
+			System.out.println("Name of student: " + name);
+			System.out.println("Student id: " + id);
+		}
+		
+		public void incr(){
+			year++;
+			System.out.println("Year of study is: " + year);
+		}
+}

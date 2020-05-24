@@ -1,0 +1,143 @@
+package task2;
+
+import java.util.Vector; 
+
+class GradeBook {
+	Course subject;
+	private Vector<Student> students = new Vector<Student>();
+	public Vector<Student> getStudents(){
+		return this.students;
+	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public GradeBook(Vector<Student> students, Course subject) {
+		this.subject = subject;
+		this.students = students;
+	}; 
+	public GradeBook(Vector<Student> students) {
+		this.students = students;
+		String prerequsiteOne = "PP1";
+		String prerequsiteTwo = "PP2";
+		Vector<String> v1 = new Vector<String>();
+		v1.add(prerequsiteOne);
+		v1.add(prerequsiteTwo);
+		this.subject =  new Course("Object-oriented Programming and Design", 
+				"Helpful subject",
+				3, v1);
+	}
+	public GradeBook(Course subject) {
+		this.subject = subject;
+		Student a = new Student("Abayev Tamirlan", "18BD001234");
+		this.students.add(a);
+		Student b = new Student("Amirov Dauren", "18BD110824");
+		this.students.add(b);
+	}
+	public GradeBook() {
+		String prerequsiteOne = "PP1";
+		String prerequsiteTwo = "PP2";
+		Vector<String> v1 = new Vector<String>();
+		v1.add(prerequsiteOne);
+		v1.add(prerequsiteTwo);
+		this.subject =  new Course("Object-oriented Programming and Design", 
+				"Helpful subject",
+				3, v1);
+		Student a = new Student("Abayev Tamirlan", "18BD001234");
+		this.students.add(a);
+		Student b = new Student("Amirov Dauren", "18BD110824");
+		this.students.add(b);
+	}
+	///////////////////////////////////////////////////////////////////////////////////////
+	
+	public void displayMessage() {
+		System.out.println("Welcome to the grade book for CS101 " + this.subject.getCourseName() + "!" + "\n" + "Please, input grades for students:");
+		}
+	
+	public void displayGradeReport(int res, int[] a) {
+		System.out.println("");
+		System.out.print("Class average is " + determineClassAverage(res) + ". ");
+		System.out.print("Lowest grade is: " + determineMin(a) + " (Student " + nameOfHalyavshik + ", id: " + idOfHalyavshik + "), ");
+		System.out.print("Highest grade is: " + determineMax(a) + " (Student " + nameOfZadr + ", id: " + idOfZadr + ").");
+		System.out.println("");
+		System.out.println(outputBarchar(a));
+	}
+	public double determineClassAverage(int res) {
+		double average = (double)res/students.size();
+		return average;
+	}
+	
+	String nameOfZadr, idOfZadr, nameOfHalyavshik, idOfHalyavshik;
+	
+	public int determineMax(int[] a) {
+		int max = 0;
+		for(int i = 0; i < a.length; i++) {
+			if(a[i] > max) {
+				max = a[i];
+				nameOfZadr = students.get(i).getName();
+				idOfZadr = students.get(i).getId();
+			}
+		}
+		return max;
+	}
+	public int determineMin(int[] a) {
+		int min = 100; 
+		for(int i = 0; i < a.length; i++) {
+			if(a[i] < min) {
+				min = a[i];
+				nameOfHalyavshik = students.get(i).getName();
+				idOfHalyavshik = students.get(i).getId();
+			}
+		}
+		return min;
+	}
+	public String outputBarchar(int[] a) {
+		System.out.println("");
+		System.out.println("Grades distribution:");
+		String str1 = "00-09:";
+		String str2 = "10-19:";
+		String str3 = "20-29:";
+		String str4 = "30-39:";
+		String str5 = "40-49:";
+		String str6 = "50-59:";
+		String str7 = "60-69:";
+		String str8 = "70-79:";
+		String str9 = "80-89:";
+		String str10 = "90-99:";
+		String str11 = "100:";
+		for(int i = 0; i < a.length; i++) {
+			if (a[i] >= 0 && a[i] <= 9) {
+				str1 += "*";
+		      } else if(a[i] >= 10 && a[i] <= 19) {
+		        str2 += "*";
+		      } else if(a[i] >= 20 && a[i] <= 29) {
+		        str3 += "*";
+		      } else if(a[i] >= 30 && a[i] <= 39) {
+		        str4 += "*";
+		      } else if(a[i] >= 40 && a[i] <= 49) {
+		        str5 += "*";
+		      } else if(a[i] >= 50 && a[i] <= 59) {
+		        str6 += "*";
+		      } else if(a[i] >= 60 && a[i] <= 69) {
+		        str7 += "*";
+		      } else if(a[i] >= 70 && a[i] <= 79) {
+		        str8 += "*";
+		      } else if(a[i] >= 80 && a[i] <= 89) {
+		        str9 += "*";
+		      } else if(a[i] >= 90 && a[i] <= 99) {
+		        str10 += "*";
+		      } else if(a[i] == 100) {
+		        str11 += "*";
+		      }
+			}
+		return str1 + "\n" + str2 + "\n" + str3 + "\n"+ str4 + "\n"+ str5 + "\n"+ str6 + "\n"+ str7 + "\n"+ str8 + "\n"+ str9 + "\n"+ str10 + "\n" + str11;
+	}
+	public String toString() {
+		String s = "";
+		for(int i = 0; i < students.size(); i++) {
+			s = s + students.get(i).getName() + "  ";
+		}
+		return "The course name is " + subject.getCourseName() + ", Students list is: " + s;
+	}
+	public boolean equals(Object o) {
+		if(o instanceof Object) return true;
+		return false;
+	}
+}

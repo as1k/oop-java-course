@@ -1,0 +1,12 @@
+Username: root
+Password: z53h
+2019-10-25T18:59:29.264913 admin logged in to a system
+2019-10-25T18:59:30.052958100 admin added new course - a
+2019-10-25T18:59:30.969010500 admin added textbook -a to course a
+2019-10-25T18:59:33.118133400 admin added instructor - a to course a
+2019-10-25T18:59:33.210138600 admin logged in to a system
+2019-10-25T18:59:35.966296300 admin added new course - b
+2019-10-25T18:59:36.888349 admin added textbook -b to course b
+2019-10-25T18:59:39.065473600 admin added instructor - b to course b
+2019-10-25T18:59:39.068473700 admin logged in to a system
+

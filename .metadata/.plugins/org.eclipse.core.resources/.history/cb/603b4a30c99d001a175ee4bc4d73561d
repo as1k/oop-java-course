@@ -1,0 +1,50 @@
+public class Analyzer {
+
+	public static void main(String[] args) {
+        
+        Data d = new Data();
+        
+        int cnt = 0;
+		while (true) {
+			cnt++;
+			Scanner scanner = new Scanner(System.in);
+			System.out.print("Enter number(Q to quit): ");
+	        String input = scanner.nextLine();
+	        
+            if ("q".equals(input)) {
+                System.out.println("Exit!");
+                break;
+            }
+            if ("Q".equals(input)) {
+                System.out.println("Exit!");
+                break;
+            }
+            if(cnt == 1) {
+            	d.setgpa1(Double.parseDouble(input));
+            }
+            if(cnt == 2) {
+            	d.setgpa2(Double.parseDouble(input));
+            }
+            if(cnt == 3) {
+            	d.setgpa3(Integer.parseInt(input));
+            }
+		}
+            double g1 = d.getgpa1();
+            double g2 = d.getgpa2();
+            int g3 = d.getgpa3();
+            
+            //functions:
+            System.out.println("Average= " + avg(g1, g2, g3));
+            System.out.println("Maximum = " + max(g1, g2, g3));
+	}
+	
+	public static double avg(double gpa1, double gpa2, int gpa3) {
+		double average = (gpa1 + gpa2 + gpa3)/3;
+		return average;
+	}
+	public static double max(double gpa1, double gpa2, int gpa3) {
+		double firstmax = Math.max(gpa1, gpa2);
+		double lastmax = Math.max(firstmax, gpa3);
+		return lastmax;
+	}	
+}

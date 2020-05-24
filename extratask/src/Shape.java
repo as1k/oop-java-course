@@ -1,0 +1,25 @@
+import java.awt.Color;
+
+abstract class Shape {
+	  public static int cnt;
+	  public Color color;
+	  int x;
+	  
+	  public Shape(Color color, int x){
+	    this.color = color;
+	    this.x= x;
+	    cnt++;
+	  }
+
+	  public abstract void draw();
+	  public void draw(Color color) {
+		  for(int i = 0; i < x; i++) {
+			  System.out.print(" ");
+		  }
+	    if (color == Color.BLACK) {
+	      System.out.println("[] () [=]");
+	    } else {
+	      System.err.println("[] () [=]");
+	    }
+	  }  
+	}

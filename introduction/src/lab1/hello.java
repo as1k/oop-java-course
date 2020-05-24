@@ -1,0 +1,44 @@
+package lab1;
+
+import java.util.Vector;
+  
+public class hello {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Hello world!");
+		
+		int x = 10;
+		boolean isOk = true;
+		double d = 1.1;
+		char c = 'c';
+		float f = 1.200f;
+		String str = new String("123");
+		
+		int[] arr = {1,2,3,4,5};
+		
+		int[] arr2 = new int[5];   
+		
+		
+		Vector v = new Vector<Integer>();
+
+		for(int i=0; i<x; i++) {
+			v.add(i);
+		}
+		
+		System.out.println(v);
+		
+		
+//		switch (x) {
+//			case (1):
+//				System.out.println(" 1");
+//				break;
+//			case (3):
+//				break;
+//			default:
+//				System.out.println("default");
+//				break;
+//		}
+	}
+}
+
